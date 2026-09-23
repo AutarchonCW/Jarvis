@@ -1,0 +1,97 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="System architecture" id="architecture">
+    <mxGraphModel dx="900" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="lan" value="Home network (LAN)" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fillColor=none;verticalAlign=top;align=left;spacingLeft=10;spacingTop=4;fontSize=12;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="40" y="60" width="760" height="600" as="geometry" />
+        </mxCell>
+
+        <mxCell id="devices" value="Household devices" style="rounded=1;whiteSpace=wrap;html=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="70" y="100" width="200" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="router" value="Router / access point" style="rounded=1;whiteSpace=wrap;html=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="330" y="100" width="220" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="host" value="Host machine (laptop)" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fillColor=none;verticalAlign=top;align=left;spacingLeft=10;spacingTop=4;fontSize=12;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="70" y="210" width="290" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="scapy" value="ARP capture (Scapy)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="90" y="250" width="250" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="api" value="FastAPI (REST API)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="90" y="305" width="250" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="db" value="SQLite database" style="shape=cylinder3;boundedLbl=1;backgroundOutline=1;size=10;whiteSpace=wrap;html=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="120" y="360" width="190" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="phone" value="Android phone" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fillColor=none;verticalAlign=top;align=left;spacingLeft=10;spacingTop=4;fontSize=12;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="480" y="210" width="270" height="165" as="geometry" />
+        </mxCell>
+        <mxCell id="app" value="Kotlin app (Compose)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="500" y="250" width="230" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="speech" value="SpeechRecognizer" style="rounded=1;whiteSpace=wrap;html=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="500" y="310" width="230" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="esp" value="ESP32 controller" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fillColor=none;verticalAlign=top;align=left;spacingLeft=10;spacingTop=4;fontSize=12;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="480" y="450" width="270" height="165" as="geometry" />
+        </mxCell>
+        <mxCell id="fw" value="ESP32 firmware" style="rounded=1;whiteSpace=wrap;html=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="500" y="490" width="230" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="led" value="LED via GPIO" style="rounded=1;whiteSpace=wrap;html=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="500" y="550" width="230" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="a1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="devices" target="router">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="a2" value="observed traffic" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;fontSize=11;" edge="1" parent="1" source="router" target="scapy">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="a3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="router" target="phone">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="a4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="router" target="esp">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="780" y="125" />
+              <mxPoint x="780" y="532" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="a5" value="REST / JSON" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=classic;startFill=1;fontSize=11;" edge="1" parent="1" source="app" target="api">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="a6" value="HTTP command" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;" edge="1" parent="1" source="api" target="fw">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="215" y="532" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="a7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="api" target="db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="a8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="fw" target="led">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
