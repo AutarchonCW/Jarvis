@@ -29,8 +29,3 @@ alignment with the human-in-the-loop principle, and cost/availability.
   documented enhancement. Does not change the design principle — discovery is
   still passive observation, not active probing.
 
-## Open decision
-
-- **Actuator: LED vs servo-driven lock.** The tools table lists an LED; earlier
-  project notes describe a servo lock. Resolve before the hardware section is
-  written, or state that both are driven from the same ESP32 endpoint.
